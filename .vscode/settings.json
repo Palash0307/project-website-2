@@ -1,5 +1,5 @@
 {
     "secrets.enabledFolders": [
-        "db_connection_string"
+        "db_connection_str"
     ]
 }
