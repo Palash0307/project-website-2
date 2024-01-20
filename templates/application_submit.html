@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include 'bootstrap.html' %}
+    <title>Application Submitted</title>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    {% include 'banner.html' %}
+    <div class="container">
+        <h1 class="text-center mt-4 mb-2">
+            Palash Solutions
+        </h1>
+        <h2> Thank you for applying for the role, we will get back to you soon!!</h2>
+        <b>Full name</b>
+        <div class="mb-2">{{application['full_name']}}</div>
+        <b>Email</b>
+        <div>{{application['email']}}</div>
+        <b>Education URL</b>
+        <div>{{application['education']}}</div>
+        <b>Email</b>
+        <div>{{application['linkedin_url']}}</div>
+        <b>Experience</b>
+        <div>{{application['experience']}}</div>
+        <b>Resume URL</b>
+        <div>{{application['resume_url']}}</div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+
+</html>

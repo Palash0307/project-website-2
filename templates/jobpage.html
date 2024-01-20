@@ -17,12 +17,12 @@
                </h1>
  <!--as our values are stored in the form of integers in database, job is the object named in our app function show_job in render template-->      
         
-                <h3 class="mb-2"> {{job[1]}} </h3>
-                <p class="lead"> {{job[2]}} </p>
+                <h3 class="mb-2"> {{job['title']}} </h3>
+                <p class="lead"> {{job['location']}} </p>
                 <h4> Responsibility </h4>
                 <!--to show in bullet points ul=unordered list,li=list item--->
                 <ul>
-                    {% for line in  job[5].split("\n") %}
+                    {% for line in  job['responsibility'].split("\n") %}
                     <li> {{line}}</li>
                     {% endfor %}
                 </ul>
@@ -30,18 +30,19 @@
                 <h4> Requirement </h4>
                 <ol> <!--ordered lists-->
                     
-                        {% for line in  job[6].split("\n") %}
+                        {% for line in  job['requirements'].split("\n") %}
                         <li> {{line}}</li>
                         {% endfor %}
                     
                 </ol>
                 
                 <h4> Salary </h4>
-                <p>{{job[4]}} {{job[3]}} </p>
+                <p>{{job['currency']}} {{job['salary']}} </p>
+                {% include 'application_form.html' %}
     </div>
         <div class="text-center col-12">
             <!--adding mail to send cv's source:mailto package mailtolink.me 18thjan-->
-            <a href="mailto:palashaggarwal@gmail.com?subject=Application%20for%20{{job['title']}}&body=Name%3A%0D%0AAge%3A%0D%0AGender%3A%0D%0AAddress%3A%0D%0APhone%20Number%3A%0D%0ALinkedin%20id%3A%0D%0AExperience%20(in%20years)%3A%0D%0A%0D%0A%0D%0AWhy%20do%20you%20think%20you%20are%20perfect%20for%20this%20role%3F" type="button" class="btn btn-outline-primary float-right align-middle " >Apply</a> 
+            <a href="mailto:palashaggarwal@gmail.com?subject=Application%20for%20{{job['title']}}&body=Name%3A%0D%0AAge%3A%0D%0AGender%3A%0D%0AAddress%3A%0D%0APhone%20Number%3A%0D%0ALinkedin%20id%3A%0D%0AExperience%20(in%20years)%3A%0D%0A%0D%0A%0D%0AWhy%20do%20you%20think%20you%20are%20perfect%20for%20this%20role%3F" type="button" class="btn btn-outline-primary float-right align-middle " >Contact Us</a> 
         </div>
         {% include 'footer.html' %}
 

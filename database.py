@@ -1,5 +1,6 @@
 
 #19th jan
+from flask import request
 from sqlalchemy import create_engine,text
 import os
 #added security to protect the password
@@ -27,12 +28,33 @@ def load_job_from_db(id):
         #val to show the id to be placed
         result=conn.execute(text("Select * from jobs where id = :val").bindparams(val=id))
         row = result.fetchone()
-        columns = ['id', 'title', 'location', 'salary','currency','responsibility','requirements']
-         # Access columns using names or indices, tuple doesn't take string values to map
-        values = [row[i] for i in range(len(columns))]
+        if row:
+            columns = ['id', 'title', 'location', 'salary', 'currency', 'responsibility', 'requirements']
+            # Access columns using names or indices, tuple doesn't take string values to map
+            values = [row[i] for i in range(len(columns))]
+            return dict(zip(columns, values))
+        else:
+            return None
        
         
         
-        return(values)
+        
+def add_application_to_db(id,application):
+    print(application)
+#going to retreive the data from our apply_to_job function in which the data object is taking our application inputs from application_submit which is linked to application_form
+    with engine.connect() as conn:
+
+        query = text("""
+        INSERT INTO Applications (job_id,full_name, email, linkedin_url, education, work_experience, resume_url)
+        VALUES (:job_id, :full_name, :email, :linkedin_url, :education, :work_experience, :resume_url)
+        """).bindparams(job_id=id,
+                     full_name=request.form.get('full_name', ''),
+                     email=request.form.get('email', ''),
+                     linkedin_url=request.form.get('linkedin_url', ''),
+                     work_experience=request.form.get('experience', ''),
+                     education=request.form.get('education', ''),
+                     resume_url=request.form.get('resume_url', ''),)
+        conn.execute(query)
+                     
         
         
