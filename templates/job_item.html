@@ -1,6 +1,7 @@
+<!--#18th jan-->
 <div class="border-bottom row" style="margin-bottom:16px; padding-bottom:8px;">
     <div class="col-9">
-
+    <!--this job varibale is taken from home.html where the loop is running from the object jobs-->
         <h4 style="color:rgb(120,120,120); margin-bottom:4px;">  {{job['title']}} </h4>
         <div>
              <b>Location:</b> {{job['location']}}
@@ -12,8 +13,8 @@
     {% endif %}
     </div> 
     <div class="col-3">
-        <!--adding mail to send cv's source:mailto package mailtolink.me-->
-        <a href="mailto:palashaggarwal@gmail.com?subject=Application%20for%20{{job['title']}}&body=Name%3A%0D%0AAge%3A%0D%0AGender%3A%0D%0AAddress%3A%0D%0APhone%20Number%3A%0D%0ALinkedin%20id%3A%0D%0AExperience%20(in%20years)%3A%0D%0A%0D%0A%0D%0AWhy%20do%20you%20think%20you%20are%20perfect%20for%20this%20role%3F" type="button" class="btn btn-outline-primary float-right align-middle">Apply</a> 
+        <!--adding mail to send cv's source:mailto package mailtolink.me 18thjan-->
+        <a href="/job/{{job['id']}}" type="button" class="btn btn-outline-primary float-right align-middle">Apply</a> 
     </div>
 
 </div> 
